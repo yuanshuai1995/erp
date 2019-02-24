@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Goods" >
+    <constructor >
+      <idArg column="goods_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goodtype_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_price" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="goods_lowstorage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="goods_topstorage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="storageorage_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goods_id, goods_number, goods_name, goodtype_id, goods_price, goods_lowstorage, goods_topstorage, 
+    storageorage_name, goods_remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_goods
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Goods" >
+    insert into t_goods (goods_id, goods_number, goods_name, 
+      goodtype_id, goods_price, goods_lowstorage, 
+      goods_topstorage, storageorage_name, goods_remark
+      )
+    values (#{goodsId,jdbcType=VARCHAR}, #{goodsNumber,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodtypeId,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DECIMAL}, #{goodsLowstorage,jdbcType=INTEGER}, 
+      #{goodsTopstorage,jdbcType=INTEGER}, #{storageorageName,jdbcType=VARCHAR}, #{goodsRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Goods" >
+    insert into t_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodtypeId != null" >
+        goodtype_id,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsLowstorage != null" >
+        goods_lowstorage,
+      </if>
+      <if test="goodsTopstorage != null" >
+        goods_topstorage,
+      </if>
+      <if test="storageorageName != null" >
+        storageorage_name,
+      </if>
+      <if test="goodsRemark != null" >
+        goods_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodtypeId != null" >
+        #{goodtypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsLowstorage != null" >
+        #{goodsLowstorage,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTopstorage != null" >
+        #{goodsTopstorage,jdbcType=INTEGER},
+      </if>
+      <if test="storageorageName != null" >
+        #{storageorageName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsRemark != null" >
+        #{goodsRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Goods" >
+    update t_goods
+    <set >
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodtypeId != null" >
+        goodtype_id = #{goodtypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsLowstorage != null" >
+        goods_lowstorage = #{goodsLowstorage,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTopstorage != null" >
+        goods_topstorage = #{goodsTopstorage,jdbcType=INTEGER},
+      </if>
+      <if test="storageorageName != null" >
+        storageorage_name = #{storageorageName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsRemark != null" >
+        goods_remark = #{goodsRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Goods" >
+    update t_goods
+    set goods_number = #{goodsNumber,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goodtype_id = #{goodtypeId,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_lowstorage = #{goodsLowstorage,jdbcType=INTEGER},
+      goods_topstorage = #{goodsTopstorage,jdbcType=INTEGER},
+      storageorage_name = #{storageorageName,jdbcType=VARCHAR},
+      goods_remark = #{goodsRemark,jdbcType=VARCHAR}
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

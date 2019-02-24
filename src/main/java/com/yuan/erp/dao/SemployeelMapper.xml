@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.SemployeelMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Semployeel" >
+    <constructor >
+      <idArg column="semployeel_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="semployeel_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="semployeel_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="employee_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="custorageomer_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="semployeel_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="semployeel_price_total" jdbcType="DECIMAL" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    semployeel_id, goods_id, goods_name, goods_number, semployeel_number, semployeel_date, 
+    employee_number, custorageomer_id, semployeel_num, semployeel_price_total
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_semployeel
+    where semployeel_id = #{semployeelId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_semployeel
+    where semployeel_id = #{semployeelId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Semployeel" >
+    insert into t_semployeel (semployeel_id, goods_id, goods_name, 
+      goods_number, semployeel_number, semployeel_date, 
+      employee_number, custorageomer_id, semployeel_num, 
+      semployeel_price_total)
+    values (#{semployeelId,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsNumber,jdbcType=VARCHAR}, #{semployeelNumber,jdbcType=VARCHAR}, #{semployeelDate,jdbcType=TIMESTAMP}, 
+      #{employeeNumber,jdbcType=VARCHAR}, #{custorageomerId,jdbcType=VARCHAR}, #{semployeelNum,jdbcType=INTEGER}, 
+      #{semployeelPriceTotal,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Semployeel" >
+    insert into t_semployeel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="semployeelId != null" >
+        semployeel_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="semployeelNumber != null" >
+        semployeel_number,
+      </if>
+      <if test="semployeelDate != null" >
+        semployeel_date,
+      </if>
+      <if test="employeeNumber != null" >
+        employee_number,
+      </if>
+      <if test="custorageomerId != null" >
+        custorageomer_id,
+      </if>
+      <if test="semployeelNum != null" >
+        semployeel_num,
+      </if>
+      <if test="semployeelPriceTotal != null" >
+        semployeel_price_total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="semployeelId != null" >
+        #{semployeelId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="semployeelNumber != null" >
+        #{semployeelNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="semployeelDate != null" >
+        #{semployeelDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeNumber != null" >
+        #{employeeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerId != null" >
+        #{custorageomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="semployeelNum != null" >
+        #{semployeelNum,jdbcType=INTEGER},
+      </if>
+      <if test="semployeelPriceTotal != null" >
+        #{semployeelPriceTotal,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Semployeel" >
+    update t_semployeel
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="semployeelNumber != null" >
+        semployeel_number = #{semployeelNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="semployeelDate != null" >
+        semployeel_date = #{semployeelDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeNumber != null" >
+        employee_number = #{employeeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerId != null" >
+        custorageomer_id = #{custorageomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="semployeelNum != null" >
+        semployeel_num = #{semployeelNum,jdbcType=INTEGER},
+      </if>
+      <if test="semployeelPriceTotal != null" >
+        semployeel_price_total = #{semployeelPriceTotal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where semployeel_id = #{semployeelId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Semployeel" >
+    update t_semployeel
+    set goods_id = #{goodsId,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_number = #{goodsNumber,jdbcType=VARCHAR},
+      semployeel_number = #{semployeelNumber,jdbcType=VARCHAR},
+      semployeel_date = #{semployeelDate,jdbcType=TIMESTAMP},
+      employee_number = #{employeeNumber,jdbcType=VARCHAR},
+      custorageomer_id = #{custorageomerId,jdbcType=VARCHAR},
+      semployeel_num = #{semployeelNum,jdbcType=INTEGER},
+      semployeel_price_total = #{semployeelPriceTotal,jdbcType=DECIMAL}
+    where semployeel_id = #{semployeelId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.TprovidecmpMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Tprovidecmp" >
+    <constructor >
+      <idArg column="providecmp_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_adress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_person" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    providecmp_id, providecmp_number, providecmp_name, providecmp_adress, providecmp_person, 
+    providecmp_tel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_providecmp
+    where providecmp_id = #{providecmpId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_providecmp
+    where providecmp_id = #{providecmpId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Tprovidecmp" >
+    insert into t_providecmp (providecmp_id, providecmp_number, providecmp_name, 
+      providecmp_adress, providecmp_person, providecmp_tel
+      )
+    values (#{providecmpId,jdbcType=VARCHAR}, #{providecmpNumber,jdbcType=VARCHAR}, #{providecmpName,jdbcType=VARCHAR}, 
+      #{providecmpAdress,jdbcType=VARCHAR}, #{providecmpPerson,jdbcType=VARCHAR}, #{providecmpTel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Tprovidecmp" >
+    insert into t_providecmp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="providecmpId != null" >
+        providecmp_id,
+      </if>
+      <if test="providecmpNumber != null" >
+        providecmp_number,
+      </if>
+      <if test="providecmpName != null" >
+        providecmp_name,
+      </if>
+      <if test="providecmpAdress != null" >
+        providecmp_adress,
+      </if>
+      <if test="providecmpPerson != null" >
+        providecmp_person,
+      </if>
+      <if test="providecmpTel != null" >
+        providecmp_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="providecmpId != null" >
+        #{providecmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpNumber != null" >
+        #{providecmpNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpName != null" >
+        #{providecmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpAdress != null" >
+        #{providecmpAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpPerson != null" >
+        #{providecmpPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpTel != null" >
+        #{providecmpTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Tprovidecmp" >
+    update t_providecmp
+    <set >
+      <if test="providecmpNumber != null" >
+        providecmp_number = #{providecmpNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpName != null" >
+        providecmp_name = #{providecmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpAdress != null" >
+        providecmp_adress = #{providecmpAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpPerson != null" >
+        providecmp_person = #{providecmpPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpTel != null" >
+        providecmp_tel = #{providecmpTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where providecmp_id = #{providecmpId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Tprovidecmp" >
+    update t_providecmp
+    set providecmp_number = #{providecmpNumber,jdbcType=VARCHAR},
+      providecmp_name = #{providecmpName,jdbcType=VARCHAR},
+      providecmp_adress = #{providecmpAdress,jdbcType=VARCHAR},
+      providecmp_person = #{providecmpPerson,jdbcType=VARCHAR},
+      providecmp_tel = #{providecmpTel,jdbcType=VARCHAR}
+    where providecmp_id = #{providecmpId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.CustorageomerMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Custorageomer" >
+    <constructor >
+      <idArg column="custorageomer_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="custorageomer_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="custorageomer_idcard" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="custorageomer_tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    custorageomer_id, custorageomer_name, custorageomer_idcard, custorageomer_tel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_custorageomer
+    where custorageomer_id = #{custorageomerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_custorageomer
+    where custorageomer_id = #{custorageomerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Custorageomer" >
+    insert into t_custorageomer (custorageomer_id, custorageomer_name, 
+      custorageomer_idcard, custorageomer_tel)
+    values (#{custorageomerId,jdbcType=VARCHAR}, #{custorageomerName,jdbcType=VARCHAR}, 
+      #{custorageomerIdcard,jdbcType=VARCHAR}, #{custorageomerTel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Custorageomer" >
+    insert into t_custorageomer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custorageomerId != null" >
+        custorageomer_id,
+      </if>
+      <if test="custorageomerName != null" >
+        custorageomer_name,
+      </if>
+      <if test="custorageomerIdcard != null" >
+        custorageomer_idcard,
+      </if>
+      <if test="custorageomerTel != null" >
+        custorageomer_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custorageomerId != null" >
+        #{custorageomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerName != null" >
+        #{custorageomerName,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerIdcard != null" >
+        #{custorageomerIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerTel != null" >
+        #{custorageomerTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Custorageomer" >
+    update t_custorageomer
+    <set >
+      <if test="custorageomerName != null" >
+        custorageomer_name = #{custorageomerName,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerIdcard != null" >
+        custorageomer_idcard = #{custorageomerIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="custorageomerTel != null" >
+        custorageomer_tel = #{custorageomerTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where custorageomer_id = #{custorageomerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Custorageomer" >
+    update t_custorageomer
+    set custorageomer_name = #{custorageomerName,jdbcType=VARCHAR},
+      custorageomer_idcard = #{custorageomerIdcard,jdbcType=VARCHAR},
+      custorageomer_tel = #{custorageomerTel,jdbcType=VARCHAR}
+    where custorageomer_id = #{custorageomerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

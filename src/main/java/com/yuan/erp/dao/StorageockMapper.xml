@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.StorageockMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Storageock" >
+    <constructor >
+      <idArg column="storageock_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_price" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="employee_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="storageock_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="storageock_price_total" jdbcType="DECIMAL" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    storageock_id, goods_id, goods_name, goods_price, employee_id, employee_name, storageock_num, 
+    storageock_price_total
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_storageock
+    where storageock_id = #{storageockId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_storageock
+    where storageock_id = #{storageockId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Storageock" >
+    insert into t_storageock (storageock_id, goods_id, goods_name, 
+      goods_price, employee_id, employee_name, 
+      storageock_num, storageock_price_total)
+    values (#{storageockId,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsPrice,jdbcType=DECIMAL}, #{employeeId,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR}, 
+      #{storageockNum,jdbcType=INTEGER}, #{storageockPriceTotal,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Storageock" >
+    insert into t_storageock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storageockId != null" >
+        storageock_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+      <if test="employeeName != null" >
+        employee_name,
+      </if>
+      <if test="storageockNum != null" >
+        storageock_num,
+      </if>
+      <if test="storageockPriceTotal != null" >
+        storageock_price_total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storageockId != null" >
+        #{storageockId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storageockNum != null" >
+        #{storageockNum,jdbcType=INTEGER},
+      </if>
+      <if test="storageockPriceTotal != null" >
+        #{storageockPriceTotal,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Storageock" >
+    update t_storageock
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="employeeId != null" >
+        employee_id = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storageockNum != null" >
+        storageock_num = #{storageockNum,jdbcType=INTEGER},
+      </if>
+      <if test="storageockPriceTotal != null" >
+        storageock_price_total = #{storageockPriceTotal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where storageock_id = #{storageockId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Storageock" >
+    update t_storageock
+    set goods_id = #{goodsId,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      employee_id = #{employeeId,jdbcType=VARCHAR},
+      employee_name = #{employeeName,jdbcType=VARCHAR},
+      storageock_num = #{storageockNum,jdbcType=INTEGER},
+      storageock_price_total = #{storageockPriceTotal,jdbcType=DECIMAL}
+    where storageock_id = #{storageockId,jdbcType=VARCHAR}
+  </update>
+</mapper>

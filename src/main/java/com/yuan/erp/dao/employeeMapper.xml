@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.employeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.employee" >
+    <constructor >
+      <idArg column="employee_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_sex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="employee_birthday" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="department_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="department_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_idcard" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_temployeenm" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    employee_id, employee_name, employee_sex, employee_birthday, department_name, department_id, 
+    employee_idcard, employee_temployeenm
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_employee
+    where employee_id = #{employeeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_employee
+    where employee_id = #{employeeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.employee" >
+    insert into t_employee (employee_id, employee_name, employee_sex, 
+      employee_birthday, department_name, department_id, 
+      employee_idcard, employee_temployeenm)
+    values (#{employeeId,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR}, #{employeeSex,jdbcType=INTEGER}, 
+      #{employeeBirthday,jdbcType=DATE}, #{departmentName,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, 
+      #{employeeIdcard,jdbcType=VARCHAR}, #{employeeTemployeenm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.employee" >
+    insert into t_employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+      <if test="employeeName != null" >
+        employee_name,
+      </if>
+      <if test="employeeSex != null" >
+        employee_sex,
+      </if>
+      <if test="employeeBirthday != null" >
+        employee_birthday,
+      </if>
+      <if test="departmentName != null" >
+        department_name,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="employeeIdcard != null" >
+        employee_idcard,
+      </if>
+      <if test="employeeTemployeenm != null" >
+        employee_temployeenm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeSex != null" >
+        #{employeeSex,jdbcType=INTEGER},
+      </if>
+      <if test="employeeBirthday != null" >
+        #{employeeBirthday,jdbcType=DATE},
+      </if>
+      <if test="departmentName != null" >
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeIdcard != null" >
+        #{employeeIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeTemployeenm != null" >
+        #{employeeTemployeenm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.employee" >
+    update t_employee
+    <set >
+      <if test="employeeName != null" >
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeSex != null" >
+        employee_sex = #{employeeSex,jdbcType=INTEGER},
+      </if>
+      <if test="employeeBirthday != null" >
+        employee_birthday = #{employeeBirthday,jdbcType=DATE},
+      </if>
+      <if test="departmentName != null" >
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeIdcard != null" >
+        employee_idcard = #{employeeIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeTemployeenm != null" >
+        employee_temployeenm = #{employeeTemployeenm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where employee_id = #{employeeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.employee" >
+    update t_employee
+    set employee_name = #{employeeName,jdbcType=VARCHAR},
+      employee_sex = #{employeeSex,jdbcType=INTEGER},
+      employee_birthday = #{employeeBirthday,jdbcType=DATE},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      employee_idcard = #{employeeIdcard,jdbcType=VARCHAR},
+      employee_temployeenm = #{employeeTemployeenm,jdbcType=VARCHAR}
+    where employee_id = #{employeeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

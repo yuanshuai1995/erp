@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.ProvideMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Provide" >
+    <constructor >
+      <idArg column="provide_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="goods_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="providecmp_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    provide_id, goods_id, goods_name, providecmp_id, providecmp_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_provide
+    where provide_id = #{provideId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_provide
+    where provide_id = #{provideId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Provide" >
+    insert into t_provide (provide_id, goods_id, goods_name, 
+      providecmp_id, providecmp_name)
+    values (#{provideId,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{providecmpId,jdbcType=VARCHAR}, #{providecmpName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Provide" >
+    insert into t_provide
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="provideId != null" >
+        provide_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="providecmpId != null" >
+        providecmp_id,
+      </if>
+      <if test="providecmpName != null" >
+        providecmp_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="provideId != null" >
+        #{provideId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpId != null" >
+        #{providecmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpName != null" >
+        #{providecmpName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Provide" >
+    update t_provide
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpId != null" >
+        providecmp_id = #{providecmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="providecmpName != null" >
+        providecmp_name = #{providecmpName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where provide_id = #{provideId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Provide" >
+    update t_provide
+    set goods_id = #{goodsId,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      providecmp_id = #{providecmpId,jdbcType=VARCHAR},
+      providecmp_name = #{providecmpName,jdbcType=VARCHAR}
+    where provide_id = #{provideId,jdbcType=VARCHAR}
+  </update>
+</mapper>

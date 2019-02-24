@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuan.erp.dao.StorageorageMapper" >
+  <resultMap id="BaseResultMap" type="com.yuan.erp.entity.Storageorage" >
+    <constructor >
+      <idArg column="storageorage_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="storageorage_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    storageorage_id, storageorage_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_storageorage
+    where storageorage_id = #{storageorageId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_storageorage
+    where storageorage_id = #{storageorageId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuan.erp.entity.Storageorage" >
+    insert into t_storageorage (storageorage_id, storageorage_name)
+    values (#{storageorageId,jdbcType=VARCHAR}, #{storageorageName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuan.erp.entity.Storageorage" >
+    insert into t_storageorage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storageorageId != null" >
+        storageorage_id,
+      </if>
+      <if test="storageorageName != null" >
+        storageorage_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storageorageId != null" >
+        #{storageorageId,jdbcType=VARCHAR},
+      </if>
+      <if test="storageorageName != null" >
+        #{storageorageName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuan.erp.entity.Storageorage" >
+    update t_storageorage
+    <set >
+      <if test="storageorageName != null" >
+        storageorage_name = #{storageorageName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where storageorage_id = #{storageorageId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuan.erp.entity.Storageorage" >
+    update t_storageorage
+    set storageorage_name = #{storageorageName,jdbcType=VARCHAR}
+    where storageorage_id = #{storageorageId,jdbcType=VARCHAR}
+  </update>
+</mapper>
