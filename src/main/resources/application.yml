@@ -1,0 +1,26 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.yuan.erp.entity
+  mapperLocations: classpath:mapper/*.xml
+  #configuration: mapUnderscoreToCamelCase=true
+mapper:
+  plugin: tk.mybatis.mapper.generator.MapperPlugin
+  Mapper: tk.mybatis.mapper.common.Mapper
+  not-empty: false
+  identity: MYSQL
+---  #分隔线不能少
+
+#开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:mysql://192.168.3.236:3307/erp?serverTimezone=GMT&useSSL=false
+    username: yuanshuai1995
+    password: eefa497350617a3c47c5
+    driver-class-name: com.mysql.jdbc.Driver
