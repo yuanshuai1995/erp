@@ -195,7 +195,7 @@ create table t_user_info
 (
   user_id              varchar(36) not null,
   username             varchar(50),
-  password             varchar(50)
+  password             varchar(100)
 );
 
 alter table t_user_info
