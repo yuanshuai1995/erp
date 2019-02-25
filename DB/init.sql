@@ -4,7 +4,7 @@
 /*==============================================================*/
 create table t_custorageomer
 (
-  custorageomer_id     varchar(32) not null,
+  custorageomer_id     varchar(36) not null,
   custorageomer_name   varchar(50),
   custorageomer_idcard varchar(18),
   custorageomer_tel    varchar(12)
@@ -20,7 +20,7 @@ alter table t_custorageomer
 /*==============================================================*/
 create table t_department
 (
-  department_id        varchar(32) not null,
+  department_id        varchar(36) not null,
   department_name      varchar(50)
 );
 
@@ -34,12 +34,12 @@ alter table t_department
 /*==============================================================*/
 create table t_employee
 (
-  employee_id          varchar(32) not null,
+  employee_id          varchar(36) not null,
   employee_name        varchar(50),
   employee_sex         int,
   employee_birthday    date,
   department_name      varchar(100),
-  department_id        varchar(32),
+  department_id        varchar(36),
   employee_idcard      varchar(18),
   employee_temployeenm varchar(15)
 );
@@ -54,10 +54,10 @@ alter table t_employee
 /*==============================================================*/
 create table t_goods
 (
-  goods_id             varchar(32) not null,
-  goods_number         varchar(32),
+  goods_id             varchar(36) not null,
+  goods_number         varchar(36),
   goods_name           varchar(100),
-  goodtype_id          varchar(32),
+  goodtype_id          varchar(36),
   goods_price          decimal,
   goods_lowstorage     int,
   goods_topstorage     int,
@@ -73,8 +73,8 @@ alter table t_goods
 /*==============================================================*/
 create table t_goodtype
 (
-  goodtype_id          varchar(32) not null,
-  goodtype_name        varchar(32)
+  goodtype_id          varchar(36) not null,
+  goodtype_name        varchar(50)
 );
 
 alter table t_goodtype comment '商品类型表';
@@ -87,11 +87,11 @@ alter table t_goodtype
 /*==============================================================*/
 create table t_provide
 (
-  goods_id             varchar(32),
+  goods_id             varchar(36),
   goods_name           varchar(50),
-  providecmp_id        varchar(32),
+  providecmp_id        varchar(36),
   providecmp_name      varchar(100),
-  provide_id           varchar(32) not null
+  provide_id           varchar(36) not null
 );
 
 alter table t_provide comment '供应表';
@@ -104,8 +104,8 @@ alter table t_provide
 /*==============================================================*/
 create table t_providecmp
 (
-  providecmp_id        varchar(32) not null,
-  providecmp_number    varchar(32),
+  providecmp_id        varchar(36) not null,
+  providecmp_number    varchar(36),
   providecmp_name      varchar(100),
   providecmp_adress    varchar(200),
   providecmp_person    varchar(50),
@@ -122,14 +122,14 @@ alter table t_providecmp
 /*==============================================================*/
 create table t_semployeel
 (
-  semployeel_id        varchar(32) not null,
-  goods_id             varchar(32),
+  semployeel_id        varchar(36) not null,
+  goods_id             varchar(36),
   goods_name           varchar(50),
-  goods_number         varchar(32),
-  semployeel_number    varchar(32),
+  goods_number         varchar(36),
+  semployeel_number    varchar(36),
   semployeel_date      datetime,
-  employee_number      varchar(32),
-  custorageomer_id     varchar(32),
+  employee_number      varchar(36),
+  custorageomer_id     varchar(36),
   semployeel_num       int,
   semployeel_price_total decimal
 );
@@ -144,11 +144,11 @@ alter table t_semployeel
 /*==============================================================*/
 create table t_storageock
 (
-  storageock_id        varchar(32) not null,
-  goods_id             varchar(32),
+  storageock_id        varchar(36) not null,
+  goods_id             varchar(36),
   goods_name           varchar(50),
   goods_price          decimal,
-  employee_id          varchar(32),
+  employee_id          varchar(36),
   employee_name        varchar(50),
   storageock_num       int,
   storageock_price_total decimal
@@ -164,7 +164,7 @@ alter table t_storageock
 /*==============================================================*/
 create table t_storageorage
 (
-  storageorage_id      varchar(32) not null,
+  storageorage_id      varchar(36) not null,
   storageorage_name    varchar(100)
 );
 
@@ -176,9 +176,9 @@ alter table t_storageorage
 /*==============================================================*/
 create table t_storageore
 (
-  storageore_id        varchar(32) not null,
-  goods_id             varchar(32),
-  goods_number         varchar(32),
+  storageore_id        varchar(36) not null,
+  goods_id             varchar(36),
+  goods_number         varchar(36),
   goods_name           varchar(50),
   goods_num            int
 );
@@ -193,9 +193,9 @@ alter table t_storageore
 /*==============================================================*/
 create table t_user_info
 (
-  user_id              varchar(32) not null,
-  username             varchar(32),
-  password             varchar(32)
+  user_id              varchar(36) not null,
+  username             varchar(50),
+  password             varchar(50)
 );
 
 alter table t_user_info
