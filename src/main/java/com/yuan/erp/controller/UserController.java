@@ -2,12 +2,14 @@ package com.yuan.erp.controller;
 
 import com.yuan.erp.entity.User;
 import com.yuan.erp.service.IUserService;
+import com.yuan.erp.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
@@ -16,6 +18,8 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+    @Resource
+    RedisUtil redisUtil;
 
     @RequestMapping("/user/getAll")
     public List<User> getAllUsers() {
@@ -55,4 +59,5 @@ public class UserController {
         }
         return false;
     }
+
 }

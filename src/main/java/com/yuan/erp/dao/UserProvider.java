@@ -15,7 +15,10 @@ public class UserProvider {
                 VALUES("username", "#{username}");
             }
             if (user.getPassword() != null) {
-                VALUES("password", "#{username}");
+                VALUES("password", "#{password}");
+            }
+            if (user.getSalt() != null) {
+                VALUES("salt", "#{salt}");
             }
         }}.toString();
     }

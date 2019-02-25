@@ -12,4 +12,6 @@ public interface IUserService {
     void updateUser(User user);
 
     void deleteUser(String userId);
+
+    boolean login(String username, String password);
 }
