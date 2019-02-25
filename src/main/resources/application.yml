@@ -2,7 +2,12 @@
 spring:
   profiles:
     active: dev
-
+  redis:
+    database: 0
+    host: 192.168.3.236
+    port: 6379
+    timeout: 10000
+    password: eefa497350617a3c47c5
 #公共配置与profiles选择无关
 mybatis:
   typeAliasesPackage: com.yuan.erp.entity
