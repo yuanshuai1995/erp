@@ -14,3 +14,11 @@
 * jwt
 * pbkdf2
 * druid
+
+### swagger 地址
+http://localhost:8080/swagger-ui.html
+
+### druid 监控地址
+http://localhost:8080/druid/index.html <br>
+druid 用户名：admin-druid   <br>
+druid 密码： 111111
